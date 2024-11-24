@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Крипта</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+  <div id="starry-background"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      //Your star creation javascript here
+    })
+  </script>
+  <div class="background-container">
+    <div class="content-container">
+      <header class="header">
+        <div class="logo">El Crypto</div>
+        <nav class="nav">
+          <ul>
+            <li><a href="index (2).html" target="_blank">О критовалюте</a></li>
+            <li><a href="#"> Главная</a></li>
+            <li><a href="#"> Услуги</a></li>
+          </ul>
+        </nav>
+        <div class="contact">
+          <i class="fas fa-phone"></i><span class="phone">+7 (982) 226-07-33</span>
+        </div>
+        <div class="buttons">
+          <button class="glow-button call-button">Звонить</button>
+          <button class="glow-button telegram-button">Написать в Telegram</button>
+        </div>
+      </header>
+
+      <main>
+        <section class="cards-container">
+          <article class="card">
+            <img src="" alt="Изображение 1">
+            <h3>Связки без карт</h3>
+            <p>
+            <ul>
+              <li>Удобно</li>
+              <li>Не нужны карты</li>
+              <li>Хороший спред</li>
+              <li>Без ограничений</li>
+            </ul>
+            </p>
+          </article>
+          <article class="card">
+            <img src="i (1).webp" alt="Изображение 2">
+            <h3>Арбитраж</h3>
+            <p>
+            <ul>
+              <li>Одновременные сделки</li>
+              <li>Транзакционные издержки</li>
+              <li>Волатильность рынка</li>
+              <li>Скорость и эффективность</li>
+            </ul>
+            </p>
+          </article>
+          <article class="card">
+            <img src="image3.jpg" alt="Изображение 3">
+            <h3>В чем выгода</h3>
+            <p>
+            <ul>
+              <li>Ликвидность</li>
+              <li>Время и скорость</li>
+              <li>Хороший спред</li>
+              <li>Волатильность рынка</li>
+            </ul>
+            </p>
+          </article>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.querySelector('.content-container').classList.add('show');
+      }, 500);
+
+      const cards = document.querySelectorAll('.card');
+      const animationDelay = 700;
+
+      cards.forEach((card, index) => {
+        setTimeout(() => {
+          card.classList.add('show-card');
+          setTimeout(() => {
+            card.classList.add('show-image');
+            setTimeout(() => {
+              card.classList.add('show-content');
+            }, animationDelay);
+          }, animationDelay);
+        }, animationDelay * index);
+      });
+    });
+   
+  </script>
+</body>
+
+</html>

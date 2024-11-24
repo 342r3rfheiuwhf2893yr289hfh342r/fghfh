@@ -1,0 +1,384 @@
+:root {
+  --secondary-color: #dc3545;
+  --accent-color: #FFD700;
+  --text-color: #333;
+  --background-color: #f0f0f0;
+  --shadow-color: rgba(0, 0, 0, 0.2);
+  --main-font-size: 1rem;
+  --mobile-breakpoint: 768px;
+  --small-mobile-breakpoint: 480px;
+  --large-desktop-breakpoint: 1200px;
+  --animation-duration: 0.8s;
+  --animation-easing: ease-in-out;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
+  color: white;
+  margin: 0;
+  padding: 0;
+  font-size: var(--main-font-size);
+  overflow: hidden;
+  background-color: black;
+  border-radius: 5px;
+}
+
+.background-container {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.background-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  background-size: 400% 400%;
+  animation: gradientAnimation 15s ease infinite;
+}
+
+.content-container {
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  opacity: 0;
+  transform: translateY(-50px);
+  transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+}
+
+.content-container.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 8px;
+  margin: 1em;
+  box-shadow: 0 4px 8px var(--shadow-color);
+  gap: 1em;
+  animation: headerSlideIn var(--animation-duration) var(--animation-easing);
+}
+
+.logo {
+  font-size: 1.8em;
+  font-weight: bold;
+  color: #00a699;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  text-decoration: none;
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.nav li {
+  margin: 0 0.5em;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #666;
+  transition: color 0.3s ease;
+}
+
+.contact,
+.buttons {
+  text-align: center;
+}
+
+.contact {
+  display: flex;
+  align-items: center;
+}
+
+.phone {
+  color: #00a699;
+  margin-left: 0.5em;
+  font-weight: bold;
+}
+
+.buttons {
+  display: flex;
+  gap: 1em;
+}
+
+.glow-button {
+  background-color: #333;
+  color: white;
+  padding: 0.8em 1.5em;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px var(--shadow-color);
+}
+
+.glow-button:hover {
+  background-image: linear-gradient(to right, var(--accent-color), var(--accent-color));
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+}
+
+
+/* Media Queries */
+@media (max-width: var(--small-mobile-breakpoint)) {
+  .logo {
+      font-size: 1.5vw;
+  }
+  .glow-button {
+      padding: 0.5vw 0.8vw;
+      font-size: 0.9vw;
+  }
+  .phone {
+      font-size: 0.9vw;
+  }
+  h1 {
+      font-size: 2vw;
+  }
+  h2 {
+      font-size: 1.5vw;
+  }
+  p {
+      font-size: 1vw;
+  }
+  body {
+      background-size: 60px 60px;
+  }
+  .header {
+      padding: 0.5em;
+  }
+  .nav li {
+      margin: 0 0.5vw;
+  }
+}
+
+@media (max-width: var(--mobile-breakpoint)) and (min-width: var(--small-mobile-breakpoint)) {
+  .header {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 0.5em;
+  }
+  .logo,
+  .nav,
+  .contact,
+  .buttons {
+      margin-bottom: 0.5em;
+  }
+  .nav {
+      margin: 0;
+  }
+  .nav ul {
+      flex-direction: column;
+      justify-content: center;
+  }
+  .nav li {
+      margin: 0 0.5em;
+  }
+  .logo {
+      font-size: 1.8vw;
+  }
+  .glow-button {
+      padding: 0.6em 1em;
+      font-size: 0.9em;
+  }
+  .phone {
+      font-size: 0.9em;
+  }
+  .header {
+      padding: 0.5em;
+  }
+  body {
+      background-size: 80px 80px;
+  }
+  h1 {
+      font-size: 2vw;
+  }
+  h2 {
+      font-size: 1.5vw;
+  }
+  p {
+      font-size: 1vw;
+  }
+}
+
+@media (min-width: var(--large-desktop-breakpoint)) {
+  .logo {
+      font-size: 2.5em;
+  }
+  body {
+      background-size: 150px 150px;
+  }
+}
+
+@keyframes headerSlideIn {
+  0% {
+      transform: translateY(-50px);
+      opacity: 0;
+  }
+  100% {
+      transform: translateY(0);
+      opacity: 1;
+  }
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 2em;
+}
+
+
+.card {
+  width: 300px;
+  margin-bottom: 1em;
+  border: none; /* Removes the border */
+  border-radius: 20px;
+  box-shadow: 2px 2px 5px rgba(117, 9, 240, 0.1);
+  padding: 1em;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  position: relative;
+  background-image: 
+    linear-gradient(to bottom, #2911e2, #64b5f6), /* Soft blue base gradient */
+    linear-gradient(135deg, rgba(9, 189, 234, 0.3) 25%, transparent 25%, transparent 50%, rgba(173,216,230,0.3) 50%, rgba(173,216,230,0.3) 75%, transparent 75%, transparent); /* Shimmer overlay */
+  background-size: 600% 600%; /* Adjust for shimmer scale */
+  background-repeat: no-repeat;
+  animation: shimmer 12s linear infinite; /* Adjust for shimmer scale */
+  background-repeat: no-repeat;
+  animation: shimmer 10s linear infinite; 
+  margin: 1em;
+  overflow: hidden;
+  cursor: pointer; /*cursor on hover*/
+}
+
+.card:hover {
+  box-shadow: 0 0 20px rgba(255, 255, 0, 0.7); /* Bright yellow glow */
+  transform: translateY(-3px); /*Slight lift on hover*/
+}
+.card img {
+  height: auto; /* Автоматически устанавливает высоту изображения в зависимости от соотношения сторон, сохраняя пропорции. */
+  margin-bottom: 0.5em; /* Добавляет отступ снизу от изображения в 0.5em. */
+  border-radius: 10px; /* Задаёт скруглённые углы изображения с радиусом 10 пикселей. */
+  transition: opacity 0.5s ease-in-out; /* Добавляет плавный переход свойства opacity за 0.5 секунды с функцией сглаживания ease-in-out. */
+  max-width: 100%; /* Максимальная ширина изображения не превышает ширину родительского элемента. */
+  display: block; /* Делает изображение блочным элементом, занимающим всю доступную ширину. */
+  margin: 0 auto; /* Выравнивает изображение по центру по горизонтали. */
+  width: auto; /* Ширина изображения устанавливается автоматически, сохраняя пропорции. */
+  height: 180px; /* Устанавливает максимальную высоту изображения в 180 пикселей. */
+  object-fit: contain; /* Изображение масштабируется, чтобы полностью уместиться в указанные размеры, сохраняя пропорции, и, возможно, с обрезанием краёв, если соотношение сторон не совпадает */
+}
+.card.show-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card.show-card .card-background {
+  opacity: 1;
+}
+
+.card h3,
+.card p {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 25;
+  
+}
+
+.card.show-content h3,
+.card.show-content p {
+  opacity: 1;
+}
+
+.card .card-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.3s ease-in-out;
+  text-align: center;
+  color: #333;
+  padding: 1em;
+  overflow: hidden; /* Important to prevent text from overflowing the card */
+}
+
+.card .card-background h3 {
+  margin-bottom: 0.5em;
+}
+
+
+@keyframes buttonPulse {
+  0% {
+      transform: scale(1);
+      box-shadow: 0 0 10px var(--shadow-color);
+  }
+  50% {
+      transform: scale(1.03);
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+  }
+  100% {
+      transform: scale(1);
+      box-shadow: 0 0 10px var(--shadow-color);
+  }
+}
+
+@keyframes pulse {
+  0% {
+      transform: scale(1);
+  }
+  50% {
+      transform: scale(1.05);
+    }
+    100% {
+      transform: scale(1);
+  }
+}
+
+.glow-button {
+  animation: pulse 1s infinite;
+  animation-timing-function: ease-in-out;
+}
+.card .card-media {
+  position: relative; /* Needed so background is positioned correctly */
+}
+.card ul {
+  list-style-type: disc; /* or square, circle, etc. */
+  padding-left: 20px;
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.card li {
+  margin-bottom: 0.5em;
+}
